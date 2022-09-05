@@ -212,8 +212,8 @@ public class PhatLoots extends JavaPlugin {
         /* Register Events */
         registerEvents();
 
-        /* Load PhatLoot/Chest data */
-        load();
+        /* Load PhatLoot/Chest data (delayed so worlds can load in first) */
+        this.getServer().getScheduler().scheduleSyncDelayedTask(this, PhatLoots::load, 1);
 
         /* Start save repeating task */
         if (autoSavePeriod > 0) {
